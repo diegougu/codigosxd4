@@ -10,11 +10,11 @@ public:
 private:
 	int elementos = 0;
 	int* arr = new int[tam];
-	void ExpandOrColapse(int newtam);
+	void resize(int newtam);
 };
 
 
-void Vector::ExpandOrColapse(int newtam) {
+void Vector::resize(int newtam) {
 	int* arrnew = new int[newtam];
 	for (int i = 0; i < tam; i++) {
 		arrnew[i] = arr[i];
@@ -27,7 +27,7 @@ void Vector::ExpandOrColapse(int newtam) {
 
 void Vector::insert(int v) {
 	if (elementos == tam) {
-		ExpandOrColapse(tam * 2);
+		resize(tam * 2);
 	}
 	arr[elementos] = v;
 	elementos++;
