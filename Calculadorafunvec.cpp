@@ -31,6 +31,12 @@ int main() {
 	float a, b, c; int opt;
 	cin >> a >> b;
 	cin >> opt;
-	c = (*vpf[opt])(a, b);
-	cout << c << endl;
+
+	try {
+		c = (*vpf[opt])(a, b);
+		cout << c << endl;
+	}
+	catch(int error){
+		throw std::runtime_error("Division by zero is not allowed.");
+	}
 }
