@@ -15,10 +15,15 @@ float Multiplication(float a, float b) {
 }
 
 float Division(float a, float b) {
-	if (b == 0.0) {
-		throw (int)0;
+	try {
+		if (b == 0.0) {
+			throw std::runtime_error("esta mal xd");
+		}
+		return a / b;
 	}
-	return a / b;
+	catch (std::exception& e) {
+		std::cerr << "Error: " << e.what() << std::endl;
+	}
 }
 
 int main() {
@@ -31,12 +36,7 @@ int main() {
 	float a, b, c; int opt;
 	cin >> a >> b;
 	cin >> opt;
+	c = (*vpf[opt])(a, b);
+	cout << c << endl;
 
-	try {
-		c = (*vpf[opt])(a, b);
-		cout << c << endl;
-	}
-	catch(int error){
-		throw std::runtime_error("Division by zero is not allowed.");
-	}
 }
